@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="../../templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+    <ui:define name="title">
+        #{ms.titulo_test}
+    </ui:define>    
+    <ui:define name="content" >
+
+        <p:panelGrid columns="1" style="width: 50%">
+            <p:outputLabel value=" ejemplo"/>
+        </p:panelGrid>
+
+        <h:form id="form_personas"  >
+            
+             <p:commandButton  id="agregar" value="agregar"
+                                      icon="ui-icon-close"
+                                      actionListener="#{testController.preparaAgregar}"
+                                     update=":mensaje :dlgCheck"
+                                      
+                                      />
+             
+             <p:spacer height="10" />
+            
+
+            <p:dataTable id="tablaPerson" class="divMarginTop panelFull_textLeft"
+                         widgetVar="tablaPerson"
+                         var="person" value="#{testController.listaPersonas}" 
+                         emptyMessage="sinREgistros" 
+                         scrollable="true"
+                         scrollHeight="440"                                   
+                         rowKey="#{person.id}" 
+                         style="font-size: .8em;width: 80%">
+
+                <p:column  style="white-space: normal" width="30" >
+
+
+                    <p:commandButton id="personEliminar"
+                                     icon="ui-icon ui-icon-trash"
+
+                                     />
+
+
+
+                </p:column>
+
+
+
+
+
+
+                <p:column headerText="nombre" 
+
+                          >
+                    <p:outputLabel  
+                        value="#{person.nombre}" />
+                </p:column>
+
+
+                <p:column headerText="nombre" 
+
+                          >
+                    <p:outputLabel  
+                        value="#{person.descripcion}" />
+                </p:column>
+
+
+
+
+
+                <p:column  style="white-space: normal" width="30" >
+                    <p:commandButton id="personEdit"  icon="ui-icon ui-icon-disk"
+                                     actionListener="#{testController.preparaEditar(person)}"
+                                     update=":mensaje :dlgCheck"> 
+
+                    </p:commandButton>
+                    <p:tooltip for="personEdit" value="editar" />
+                </p:column>
+
+
+            </p:dataTable>
+
+
+
+        </h:form>  
+
+
+
+
+        <p:dialog id="dlgCheck" appendTo="@(body)"  width="350"  height="200"
+                  closable="true"
+                  widgetVar="dlgCheck"
+                  modal="true"   
+                  resizable="true"
+                  showEffect="slide" hideEffect="drop"
+                  >
+
+            <f:facet name="header" >
+            </f:facet>
+
+
+            <p:panelGrid id="pgDlgCheck" columns="1"  >
+
+                <h:form id="form_dlg_check">
+
+                    <h:panelGrid id="pgDlgInfoCheck" columns="1" style="width: 100%" >
+                        <p:outputLabel value="nombre" />
+                        <p:inputText value="#{testController.personSelected.nombre}" />
+                        <p:outputLabel value="desc" />
+                        <p:inputText value="#{testController.personSelected.descripcion}" />
+
+
+                    </h:panelGrid>
+
+
+
+                    
+                    <p:commandButton  id="guardar" value="guardar"
+                                      icon="ui-icon-close"
+                                      onclick="PF('dlgCheck').hide();"           
+                                      rendered="#{testController.renderGuardar}"
+                                      update=":form_personas:tablaPerson :mensaje"
+                                      />
+
+                    <p:commandButton id="editar"  
+                                      rendered="#{!testController.renderGuardar}"
+                                     value="editar"
+                                     actionListener="#{testController.edita}"
+                                     onclick="PF('dlgCheck').close();"
+                                     icon="ui-icon-key"   
+                                      update=":form_personas:tablaPerson :mensaje"
+                                     />
+                    
+                </h:form>
+
+            </p:panelGrid>
+
+        </p:dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ui:define>
+</ui:composition>

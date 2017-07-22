@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/07/2017 04:38:30 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.ipn.upiicsa.portal_admon.pojo.RolUsuario" table="rol_usuario" catalog="stymacom_Promocion_Beacons" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="codigo" type="string">
+            <column name="codigo" length="45" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" not-null="true" />
+        </property>
+        <property name="fechaAlta" type="timestamp">
+            <column name="fecha_alta" length="19" not-null="true" />
+        </property>
+        <property name="usuarioAlta" type="string">
+            <column name="usuario_alta" length="45" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rol_usuario_id" not-null="true" />
+            </key>
+            <one-to-many class="mx.ipn.upiicsa.portal_admon.pojo.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

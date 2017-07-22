@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/07/2017 04:38:30 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.ipn.upiicsa.portal_admon.pojo.Departamento" table="departamento" catalog="stymacom_Promocion_Beacons" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sucursal" class="mx.ipn.upiicsa.portal_admon.pojo.Sucursal" fetch="select">
+            <column name="sucursal_id" not-null="true" />
+        </many-to-one>
+        <property name="codigo" type="string">
+            <column name="codigo" length="45" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" not-null="true" />
+        </property>
+        <property name="ubicacion" type="string">
+            <column name="ubicacion" length="45" />
+        </property>
+        <property name="fechaAlta" type="timestamp">
+            <column name="fecha_alta" length="19" not-null="true" />
+        </property>
+        <property name="usuarioAlta" type="string">
+            <column name="usuario_alta" length="45" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <set name="beaconDepartamentos" table="beacon_departamento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="departamento_id" not-null="true" />
+            </key>
+            <one-to-many class="mx.ipn.upiicsa.portal_admon.pojo.BeaconDepartamento" />
+        </set>
+    </class>
+</hibernate-mapping>

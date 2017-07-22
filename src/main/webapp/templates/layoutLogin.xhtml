@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    <f:view contentType="text/html" >
+        <h:head>
+
+            <f:facet name="first"> 
+                <meta http-equiv="X-UA-Compatible" content="IE=9"/> 
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta http-equiv="content-language" content="es"/>
+                <meta name="robots" content="all"/>
+                <meta name="robots" content="index,follow"/>
+                <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"/>
+                <meta http-equiv="PRAGMA" content="NO-CACHE"/>
+            </f:facet> 
+
+            <!--<link href='#{request.contextPath}/resources/img/icon/x.ico' rel='shortcut icon' type='image/x-icon'/>-->
+            <title><ui:insert name="title">PORTAL-ADMINISTRACION</ui:insert></title>
+            <h:outputStylesheet library="css" name="clean.css" />
+
+
+
+
+
+
+            <ui:insert name="cssLinks"/>
+            <ui:insert name="jsLinks"/>
+
+
+        </h:head>
+
+        <h:body  >
+            <p:growl id="growl" life="3200" showDetail="true"  />
+            <p:layout fullPage="true"  > 
+
+                <p:layoutUnit position="center"  resizable="false" closable="false"     > 
+                          
+                    
+                    
+                    
+                    <ui:insert name="content"></ui:insert>    
+                   
+                </p:layoutUnit> 
+
+            </p:layout> 
+
+
+
+
+
+        </h:body>
+
+    </f:view>
+
+</html>

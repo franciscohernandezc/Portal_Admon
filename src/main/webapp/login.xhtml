@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="./templates/layoutLogin.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+    <ui:define name="content" >
+        <f:event listener="#{loginManager.updateMessages(true)}" type="preRenderView" />
+
+
+
+
+        <div >   
+            <h:panelGrid id="pgLogin" columns="1"
+                         class="pgCtrSBordeSFondoCenter panelFull_textCenter" >
+
+
+
+                <h:form id="loginForm"  prependId="false">
+                    <h:panelGrid columns="1"  class=" panelFull_textCenter
+                                 pgCtrSBordeSFondo "
+                                 >       
+                        <f:facet name="header" >
+
+                            <p:outputLabel value="Login"
+                                           />
+
+                        </f:facet>
+
+
+
+                        <p:spacer height="20" />
+                        <p:outputLabel  
+                            value="Usuario"  />
+                        <p:inputText id="j_username" size="35"  maxlength="10" 
+                                     value="#{loginManager.username}"
+                                     onblur="this.value = this.value.toUpperCase();"                                    
+                                     required="true"  requiredMessage="Usuario"/>
+
+
+                        <p:spacer height="1" />
+                        <p:outputLabel 
+                            value="Contraseña"  styleClass="pgctrLogin" 
+                            class="textoBlanco" />
+                        <p:password id="passIngreso" size="35" value="#{loginManager.password}" maxlength="10" 
+                                    required="true" requiredMessage="Contraseña"   />
+                        <p:spacer height="1" />
+                    </h:panelGrid>   
+                    <h:panelGrid columns="1" class="pgCtrSBordeSFondoCenter panelFull_textRigth">
+                        <p:commandButton value="ingresar" 
+                                         icon="ui-icon ui-icon-key"
+                                         update=":formLogin :growl"  
+                                         type="submit" ajax="false"  
+                                         action="#{loginManager.doLogin}"
+                                         class="botonesGrandes"/>
+
+
+
+
+
+
+
+
+
+                    </h:panelGrid>
+
+
+                </h:form>
+            </h:panelGrid>
+
+        </div>
+
+
+
+    </ui:define>
+
+
+</ui:composition>

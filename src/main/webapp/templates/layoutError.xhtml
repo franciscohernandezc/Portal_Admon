@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    <f:view contentType="text/html">
+        <h:head>
+            <title><ui:insert name="title">Portal admin</ui:insert></title>
+
+
+            <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+            <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="content-language" content="es"/>
+            <meta name="robots" content="all"/>
+            <meta name="robots" content="index,follow"/>
+            <meta http-equiv="CACHE-CONTROL" content="NO-CACHE"/>
+            <meta http-equiv="PRAGMA" content="NO-CACHE"/>
+
+
+
+            <ui:insert name="cssLinks"/>
+            <ui:insert name="jsLinks"/>
+
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+        </h:head>
+
+        <h:body class="fullBack" >
+            <p:growl id="mensaje" life="3200" />
+            <p:layout fullPage="true"  > 
+
+                <p:layoutUnit position="center"  resizable="false" closable="false"     > 
+
+
+                    <div style="height:  120px; width: 100%;"></div>
+                    <div class="trasparenteBlanco" style="margin: 0 auto ;
+
+                         width: 94%; margin-bottom: 63px; padding: 5px;">
+
+                        <ui:insert name="content"></ui:insert>                        
+                    </div>
+
+                    <div class="bottom bottomPng"  style="height: 33px;padding-bottom: 3px;">
+
+                    </div>
+                    <div  style="height: 33px;padding-bottom: 3px" >
+
+                    </div>
+
+                </p:layoutUnit> 
+
+            </p:layout> 
+        </h:body>
+
+    </f:view>
+
+</html>
